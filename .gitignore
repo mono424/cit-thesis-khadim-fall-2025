@@ -1,0 +1,13 @@
+venv
+.venv
+__pycache__
+.pytest_cache
+node_modules
+.env
+root_ca.crt
+allowed_users.txt
+*.egg-info
+metrics/
+*.so
+zenoh_config.json5
+.vite

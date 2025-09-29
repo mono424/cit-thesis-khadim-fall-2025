@@ -1,0 +1,12 @@
+{
+  mode: "client",
+  connect: { endpoints: ["tcp/localhost:7447"] },
+  transport: {
+    auth: {
+      usrpwd: {
+        user: "foo@bar.com",
+        password: "secret",
+      },
+    },
+  },
+}

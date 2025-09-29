@@ -1,0 +1,11 @@
+[tool.uv.workspace]
+members = [
+    "apps/backend-streaming",
+    "packages/pyzdepth",
+    "packages/pyxylt"
+]
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.31.4",
+]

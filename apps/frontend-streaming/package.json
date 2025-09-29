@@ -1,0 +1,39 @@
+{
+  "name": "frontend-streaming",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "dev:streaming": "pnpm run dev",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.0.4",
+    "@types/utif": "^3.0.5",
+    "@webgpu/types": "^0.1.52",
+    "typescript": "^5.7.2",
+    "vite": "^7.1.2",
+    "vite-plugin-solid": "^2.11.8",
+    "vite-plugin-wasm": "^3.5.0"
+  },
+  "dependencies": {
+    "@eclipse-zenoh/zenoh-ts": "1.5.0",
+    "@influxdata/influxdb-client-browser": "^1.35.0",
+    "@mono424/cdr-ts": "^1.3.5",
+    "@mono424/tetris-ts": "^0.0.4",
+    "shared": "workspace:*",
+    "@mono424/zdepth-wasm": "^0.0.1",
+    "@solid-primitives/scheduled": "^1.5.2",
+    "@tailwindcss/vite": "^4.1.12",
+    "@yume-chan/scrcpy": "^2.1.1",
+    "@yume-chan/scrcpy-decoder-webcodecs": "^2.1.0",
+    "solid-js": "^1.9.5",
+    "lucide-solid": "^0.544.0",
+    "tailwindcss": "^4.1.12",
+    "wgpu-matrix": "^3.4.0"
+  }
+}

@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "backend-streaming"
+version = "0.1.0"
+description = "Backend streaming application with WebGPU rendering and Zenoh communication"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "opencv-python~=4.10.0.84",
+    "eclipse-zenoh==1.5.0",
+    "pydantic",
+    "PySide6",
+    "qasync",
+    "wgpu",
+    "numpy",
+    "av",
+    "Pillow",
+    "pycdr2",
+    "rich",
+    "websockets",
+    "aiohttp",
+    "aiortc",
+    "pyzdepth",
+    "pyxylt"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "flake8",
+    "mypy",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.uv.sources]
+pyzdepth = { workspace = true }
+pyxylt = { workspace = true }
+
+[project.scripts]
+backend-streaming = "main:main"
