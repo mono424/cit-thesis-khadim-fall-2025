@@ -8,5 +8,5 @@ def init_canvas(state: GlobalState):
         #state.set_canvas(WgpuCanvas(size=(1280, 960), title="wgpu onscreen canvas"))
         raise ValueError("Onscreen rendering is disabled")
     else:
-        from wgpu.gui.offscreen import WgpuCanvas
+        from rendercanvas.offscreen import OffscreenRenderCanvas as WgpuCanvas
         state.set_canvas(WgpuCanvas(size=(1280, 960), title="wgpu offscreen canvas"))

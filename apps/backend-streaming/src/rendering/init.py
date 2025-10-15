@@ -11,7 +11,7 @@ def init_wgpu(state: GlobalState):
         raise ValueError("Canvas is not initialized")
     adapter = gpu.request_adapter_sync(power_preference="high-performance")
     device = adapter.request_device_sync(required_limits=None)
-    context = state.canvas.get_context()
+    context = state.canvas.get_context("wgpu")
     render_texture_format = context.get_preferred_format(device.adapter)
     context.configure(
         device=device,

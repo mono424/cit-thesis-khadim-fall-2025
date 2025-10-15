@@ -1,7 +1,7 @@
 from rendering.pointcloud_transformer.transformer import PointcloudTransformer
 from zenoh import Session, Subscriber
 from rich.console import Console
-from wgpu.gui.auto import WgpuCanvas
+from rendercanvas.offscreen import OffscreenRenderCanvas as WgpuCanvas
 from rendering.grid.renderer import GridRenderer, GridRendererOptions
 from wgpu import GPUDevice, GPUCanvasContext
 from rendering.pointcloud.renderer import PointCloudRenderer, PointCloudRendererOptions
