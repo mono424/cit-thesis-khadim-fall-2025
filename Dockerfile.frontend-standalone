@@ -31,13 +31,25 @@ RUN pnpm build
 # Production stage
 FROM nginx:alpine AS production
 
+# Install certbot and dependencies
+RUN apk add --no-cache certbot python3 py3-pip \
+    && pip3 install --upgrade pip \
+    && pip3 install certbot-nginx certbot-dns-cloudflare
+
 # Copy built files to nginx
 COPY --from=base /app/apps/frontend-standalone/dist /usr/share/nginx/html
 
 # Copy custom nginx configuration
 COPY apps/frontend-standalone/nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 80
+# Copy certbot renewal script
+COPY apps/frontend-standalone/certbot-renew.sh /usr/local/bin/certbot-renew.sh
+RUN chmod +x /usr/local/bin/certbot-renew.sh
+
+# Create directory for certbot certificates
+RUN mkdir -p /etc/letsencrypt/live
+
+EXPOSE 80 443
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]

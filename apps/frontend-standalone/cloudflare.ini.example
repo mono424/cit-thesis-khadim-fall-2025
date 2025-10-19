@@ -1,0 +1,10 @@
+# Cloudflare API credentials for DNS challenge
+# Copy this file to /etc/letsencrypt/cloudflare.ini in your container
+# and replace with your actual credentials
+
+# Option 1: API Token (recommended)
+dns_cloudflare_api_token = your_cloudflare_api_token_here
+
+# Option 2: Global API Key (alternative)
+# dns_cloudflare_email = your_cloudflare_email@example.com
+# dns_cloudflare_api_key = your_global_api_key_here
