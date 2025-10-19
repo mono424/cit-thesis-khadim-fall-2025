@@ -26,7 +26,6 @@ RUN pnpm build
 
 # Build frontend-streaming app
 WORKDIR /app/apps/frontend-streaming
-ENV VITE_BACKEND_URL=http://localhost:8093
 RUN pnpm build
 
 # Production stage
