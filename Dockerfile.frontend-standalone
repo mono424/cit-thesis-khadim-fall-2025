@@ -47,9 +47,10 @@ COPY apps/frontend-standalone/ssl.conf /etc/nginx/ssl.conf.template
 COPY apps/frontend-standalone/start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-# Copy certbot renewal script
+# Copy certbot scripts
 COPY apps/frontend-standalone/certbot-renew.sh /usr/local/bin/certbot-renew.sh
-RUN chmod +x /usr/local/bin/certbot-renew.sh
+COPY apps/frontend-standalone/certbot-setup.sh /usr/local/bin/certbot-setup.sh
+RUN chmod +x /usr/local/bin/certbot-renew.sh /usr/local/bin/certbot-setup.sh
 
 # Create directory for certbot certificates
 RUN mkdir -p /etc/letsencrypt/live

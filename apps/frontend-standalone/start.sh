@@ -7,6 +7,7 @@ if [ -f "/etc/letsencrypt/live/thesis.khadim.io/fullchain.pem" ] && [ -f "/etc/l
     cp /etc/nginx/ssl.conf.template /etc/nginx/ssl.conf
 else
     echo "SSL certificates not found, running HTTP only..."
+    echo "To enable SSL, run: /usr/local/bin/certbot-setup.sh"
     # Create empty SSL configuration file
     touch /etc/nginx/ssl.conf
 fi
