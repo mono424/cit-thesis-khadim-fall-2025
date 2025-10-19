@@ -40,6 +40,13 @@ COPY --from=base /app/apps/frontend-standalone/dist /usr/share/nginx/html
 # Copy custom nginx configuration
 COPY apps/frontend-standalone/nginx.conf /etc/nginx/nginx.conf
 
+# Copy SSL configuration template
+COPY apps/frontend-standalone/ssl.conf /etc/nginx/ssl.conf.template
+
+# Copy startup script
+COPY apps/frontend-standalone/start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
+
 # Copy certbot renewal script
 COPY apps/frontend-standalone/certbot-renew.sh /usr/local/bin/certbot-renew.sh
 RUN chmod +x /usr/local/bin/certbot-renew.sh
@@ -49,5 +56,5 @@ RUN mkdir -p /etc/letsencrypt/live
 
 EXPOSE 80 443
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start nginx with conditional SSL
+CMD ["/usr/local/bin/start.sh"]
