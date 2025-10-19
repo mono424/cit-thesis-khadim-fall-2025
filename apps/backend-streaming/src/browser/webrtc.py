@@ -3,8 +3,9 @@ import os
 import numpy as np
 from PIL import Image
 from performance.fps_counter import FPSCounter
-from aiortc import RTCPeerConnection, RTCSessionDescription, VideoStreamTrack, RTCConfiguration
+from aiortc import RTCPeerConnection, RTCSessionDescription, VideoStreamTrack, RTCConfiguration, RTCIceServer
 from aiohttp import web
+from aiohttp_cors import setup as cors_setup, ResourceOptions
 import av # PyAV is used by aiortc for encoding
 from core.state import GlobalState
 from core.shutdown import is_shutdown_requested
@@ -80,7 +81,23 @@ class WebRTCServer:
         """Set up the aiohttp web application with routes."""
         self.app = web.Application()
         self.app.on_shutdown.append(self._on_shutdown)
+        
+        # Configure CORS
+        cors = cors_setup(self.app, defaults={
+            "http://localhost:8092": ResourceOptions(
+                allow_credentials=True,
+                expose_headers="*",
+                allow_headers="*",
+                allow_methods="*"
+            )
+        })
+        
+        # Add routes
         self.app.router.add_post("/offer", self._offer)
+        
+        # Add CORS to routes
+        for route in list(self.app.router.routes()):
+            cors.add(route)
     
     async def _on_shutdown(self, app):
         """Clean up peer connections on shutdown."""
@@ -93,7 +110,10 @@ class WebRTCServer:
         params = await request.json()
         offer = RTCSessionDescription(sdp=params["sdp"], type=params["type"])
         configuration = RTCConfiguration(
-            iceServers=[],
+            iceServers=[
+                RTCIceServer(urls="stun:stun.l.google.com:19302"),
+                RTCIceServer(urls="stun:stun1.l.google.com:19302")
+            ]
         )
         pc = RTCPeerConnection(configuration)
         self.pcs.add(pc)

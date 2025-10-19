@@ -22,6 +22,7 @@ dependencies = [
     "rich",
     "websockets",
     "aiohttp",
+    "aiohttp-cors",
     "aiortc",
     "pyzdepth",
     "pyxylt"

@@ -70,7 +70,7 @@ RUN sed -i '/\[tool.uv.sources\]/,/^\[/ { /^\[/!d; }' pyproject.toml
 
 # Install backend-streaming dependencies without workspace sources
 RUN uv pip install --system --no-cache --no-deps -e . \
-    && uv pip install --system --no-cache opencv-python~=4.10.0.84 eclipse-zenoh==1.5.0 pydantic PySide6 qasync wgpu numpy av Pillow pycdr2 rich websockets aiohttp aiortc rendercanvas pybind11
+    && uv pip install --system --no-cache opencv-python~=4.10.0.84 eclipse-zenoh==1.5.0 pydantic PySide6 qasync wgpu numpy av Pillow pycdr2 rich websockets aiohttp aiohttp-cors aiortc rendercanvas pybind11
 
 # pyzdepth extension is already built during package installation above
 

@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  backend-streaming:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend-streaming
+    image: thesis-backend-streaming
+    container_name: backend-streaming
+    environment:
+      - PYTHONPATH=/app/apps/backend-streaming/src
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./apps/backend-streaming/config:/app/apps/backend-streaming/config:ro
+    restart: unless-stopped
+    network_mode: host
+
+  frontend-streaming:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend-streaming
+    image: thesis-frontend-streaming
+    container_name: frontend-streaming
+    ports:
+      - "8092:80"
+    depends_on:
+      - backend-streaming
+    restart: unless-stopped
+
+  frontend-standalone:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend-standalone
+    image: thesis-frontend-standalone
+    container_name: frontend-standalone
+    ports:
+      - "8091:80"
+    restart: unless-stopped
