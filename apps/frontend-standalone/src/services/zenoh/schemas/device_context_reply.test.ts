@@ -71,14 +71,14 @@ test("device context reply: quick structure check", () => {
   expect(depthParams.image_width).toBe(320);
   expect(depthParams.image_height).toBe(288);
   expect(depthParams.focal_length).toEqual([
-    36893488147419103000, -36893488147419103000,
+    36893488147418093000, -36893488147418093000,
   ]);
   expect(depthParams.principal_point).toEqual([0, -0]);
   expect(depthParams.tangential_coefficients).toEqual([
-    -36893488147419103000, 0,
+    -36893488147418093000, 0,
   ]);
   expect(depthParams.radial_coefficients).toEqual([
-    2, 2, 2, -36893488147419103000, 0, 2, 0, 0,
+    2, 2, 2, -36893488147418093000, 0, 2, 0, 0,
   ]);
 
   // Validate color parameters
@@ -87,12 +87,12 @@ test("device context reply: quick structure check", () => {
   expect(colorParams.image_width).toBe(2048);
   expect(colorParams.image_height).toBe(1536);
   expect(colorParams.focal_length).toEqual([1.0842021724855044e-19, -2]);
-  expect(colorParams.principal_point).toEqual([-2, 36893488147419103000]);
+  expect(colorParams.principal_point).toEqual([-2, 36893488147418093000]);
   expect(colorParams.tangential_coefficients).toEqual([
-    -0, 36893488147419103000,
+    -0, 36893488147418093000,
   ]);
   expect(colorParams.radial_coefficients).toEqual([
-    1.0842021724855044e-19, -36893488147419103000, -36893488147419103000,
+    1.0842021724855044e-19, -36893488147418093000, -36893488147418093000,
     -1.0842021724855044e-19, -2, 0, 0, 0,
   ]);
 
@@ -106,7 +106,7 @@ test("device context reply: quick structure check", () => {
   expect(cameraPose.rotation).toBeDefined();
   expect(cameraPose.rotation.x).toBe(-1.0842021724855044e-19);
   expect(cameraPose.rotation.y).toBe(-1.0842021724855044e-19);
-  expect(cameraPose.rotation.z).toBe(36893488147419103000);
+  expect(cameraPose.rotation.z).toBe(36893488147418093000);
   expect(cameraPose.rotation.w).toBe(2);
 
   // Validate color2depth transform
@@ -117,7 +117,7 @@ test("device context reply: quick structure check", () => {
   expect(color2depthTransform.translation.y).toBe(-2);
   expect(color2depthTransform.translation.z).toBe(-1.0842021724855044e-19);
   expect(color2depthTransform.rotation).toBeDefined();
-  expect(color2depthTransform.rotation.x).toBe(36893488147419103000);
+  expect(color2depthTransform.rotation.x).toBe(36893488147418093000);
   expect(color2depthTransform.rotation.y).toBe(0);
   expect(color2depthTransform.rotation.z).toBe(1.0842021724855044e-19);
   expect(color2depthTransform.rotation.w).toBe(-1.0842021724855044e-19);

@@ -73,11 +73,14 @@ export async function createWebrtc(state: GlobalState) {
 
   const connect = async () => {
     try {
-      const response = await fetch("/_/offer", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sdp: offer.sdp, type: offer.type }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL ?? "/_"}/offer`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sdp: offer.sdp, type: offer.type }),
+        }
+      );
       const answer = await response.json();
       await pc.setRemoteDescription(new RTCSessionDescription(answer));
     } catch (error) {

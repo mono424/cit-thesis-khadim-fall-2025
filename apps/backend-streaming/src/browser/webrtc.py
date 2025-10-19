@@ -228,7 +228,7 @@ class WebRTCServer:
     def run(self):
         """Run the aiohttp web server with shutdown monitoring."""
         try:
-            self.state.console.log("WebRTC server starting on http://0.0.0.0:8080")
+            self.state.console.log("WebRTC server starting on http://0.0.0.0:8093")
             
             # Create an event loop for this thread
             loop = asyncio.new_event_loop()
@@ -250,7 +250,7 @@ class WebRTCServer:
         runner = web.AppRunner(self.app, handle_signals=False)
         await runner.setup()
         
-        site = web.TCPSite(runner, "0.0.0.0", 8080)
+        site = web.TCPSite(runner, "0.0.0.0", 8093)
         await site.start()
         
         self.state.console.log("WebRTC server started, monitoring for shutdown...")

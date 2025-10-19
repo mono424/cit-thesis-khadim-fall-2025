@@ -75,7 +75,7 @@ RUN uv pip install --system --no-cache --no-deps -e . \
 # pyzdepth extension is already built during package installation above
 
 # Expose port (adjust as needed for your application)
-EXPOSE 8080
+EXPOSE 8093
 
 # Set environment variables
 ENV PYTHONPATH=/app/apps/backend-streaming/src

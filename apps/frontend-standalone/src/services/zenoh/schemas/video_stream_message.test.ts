@@ -17,11 +17,11 @@ test("parseCDRBytes with valid data", () => {
 
   expect(parsed.payload.pose.translation.x).toBe(1.0842021724855044e-19);
   expect(parsed.payload.pose.translation.y).toBe(-1.0842021724855044e-19);
-  expect(parsed.payload.pose.translation.z).toBe(-36893488147419103000);
+  expect(parsed.payload.pose.translation.z).toBe(-36893488147418093000);
 
-  expect(parsed.payload.pose.rotation.x).toBe(-36893488147419103000);
+  expect(parsed.payload.pose.rotation.x).toBe(-36893488147418093000);
   expect(parsed.payload.pose.rotation.y).toBe(0);
-  expect(parsed.payload.pose.rotation.z).toBe(36893488147419103000);
+  expect(parsed.payload.pose.rotation.z).toBe(36893488147418093000);
   expect(parsed.payload.pose.rotation.w).toBe(1.0842021724855044e-19);
 
   expect(parsed.payload.camera_focal_length[0]).toBe(965.5166625976562);

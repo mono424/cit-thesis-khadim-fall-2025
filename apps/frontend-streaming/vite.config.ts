@@ -15,7 +15,7 @@ export default defineConfig({
     },
     proxy: {
       "/_": {
-        target: "http://localhost:8080",
+        target: "http://localhost:8093",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/_/, ""),
       },
