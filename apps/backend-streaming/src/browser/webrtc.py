@@ -82,9 +82,12 @@ class WebRTCServer:
         self.app = web.Application()
         self.app.on_shutdown.append(self._on_shutdown)
         
-        # Configure CORS
+        # Configure CORS with environment variable
+        allowed_origin = os.getenv("WEBRTC_CORS_ORIGIN", "http://localhost:8092")
+        self.state.console.log(f"WebRTC CORS origin configured for: {allowed_origin}")
+        
         cors = cors_setup(self.app, defaults={
-            "http://localhost:8092": ResourceOptions(
+            allowed_origin: ResourceOptions(
                 allow_credentials=True,
                 expose_headers="*",
                 allow_headers="*",

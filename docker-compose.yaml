@@ -10,6 +10,7 @@ services:
     environment:
       - PYTHONPATH=/app/apps/backend-streaming/src
       - PYTHONUNBUFFERED=1
+      - WEBRTC_CORS_ORIGIN=http://10.2.3.43:8092
     volumes:
       - ./apps/backend-streaming/config:/app/apps/backend-streaming/config:ro
     restart: unless-stopped

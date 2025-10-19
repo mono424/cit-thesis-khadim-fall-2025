@@ -80,6 +80,7 @@ EXPOSE 8093
 # Set environment variables
 ENV PYTHONPATH=/app/apps/backend-streaming/src
 ENV PYTHONUNBUFFERED=1
+ENV WEBRTC_CORS_ORIGIN=http://localhost:8092
 
 # Default command
 CMD ["python", "run.py"]
