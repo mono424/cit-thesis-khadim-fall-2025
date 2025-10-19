@@ -35,5 +35,6 @@ services:
     image: thesis-frontend-standalone
     container_name: frontend-standalone
     ports:
-      - "8091:80"
+      - "80:80"
+      - "443:443"
     restart: unless-stopped
