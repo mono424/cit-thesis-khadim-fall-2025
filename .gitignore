@@ -11,3 +11,4 @@ metrics/
 *.so
 zenoh_config.json5
 .vite
+letsencrypt/live/
